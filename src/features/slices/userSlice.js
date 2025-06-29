@@ -39,6 +39,7 @@ export const login = createAsyncThunk(
     async (data, thunkAPI) => {
         try {
             const res = await axiosClient.post('/user/login', data);
+            window.localStorage.setItem("user", JSON.stringify(res.data?.data))
             return res.data;
         } catch (err) {
             console.log('error00', err.response.data.message)

@@ -6,6 +6,7 @@ import useToast from "../../Component/ToastProvider/useToast";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "../../contexts/theme/hook/useTheme";
 import { login } from "../../features/slices/userSlice";
+import { useNavigate } from "react-router";
 
 export default function Login() {
   const { theme } = useTheme();
@@ -18,7 +19,7 @@ export default function Login() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
-
+  const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,6 +36,7 @@ export default function Login() {
       .then((result) => {
         if (login.fulfilled.match(result)) {
           toast.success("Login successful");
+          navigate('/dashboard')
         } else {
           toast.error(result.payload || "Login failed");
         }
@@ -43,7 +45,7 @@ export default function Login() {
         toast.error("Something went wrong");
         console.error(err);
       })
-      .finally(() => {});
+      .finally(() => { });
   };
 
   let { loading, error } = selector ? selector : {};

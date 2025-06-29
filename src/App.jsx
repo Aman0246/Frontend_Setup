@@ -6,6 +6,9 @@ import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import LayoutWrapper from "./Component/Layout/LayoutWrapper";
 import Loader from "./Component/Common/Loader";
+import AllSubcategory from "./Pages/Category/AllSubcategory";
+import Category from "./Pages/Category/Category";
+import AttributePage from "./Pages/Category/AttributePage";
 
 
 // Lazy-loaded pages
@@ -25,12 +28,19 @@ function App() {
           </Route>
 
           {/* Private Routes */}
-          {/* Replace with <PrivateRoute /> if needed */}
-          <Route element={<PublicRoute />}>
+          <Route element={<PrivateRoute />}>
             <Route element={<LayoutWrapper />}>
               <Route path="/" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/user" element={<User />} />
+
+              <Route path="/subcategory/:id" element={<AllSubcategory />} />
+
+              <Route path="/category" element={<Category />} />
+              <Route path="/subcategoryAttribute/:id" element={<AttributePage />} />
+
+
+
             </Route>
           </Route>
         </Routes>
