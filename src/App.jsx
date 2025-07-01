@@ -9,6 +9,7 @@ import Loader from "./Component/Common/Loader";
 import AllSubcategory from "./Pages/Category/AllSubcategory";
 import Category from "./Pages/Category/Category";
 import AttributePage from "./Pages/Category/AttributePage";
+import Product from "./Pages/Product/Product";
 
 
 // Lazy-loaded pages
@@ -38,6 +39,9 @@ function App() {
 
               <Route path="/category" element={<Category />} />
               <Route path="/subcategoryAttribute/:id" element={<AttributePage />} />
+
+
+              <Route path="/product" element={<Product />} />
 
 
 
